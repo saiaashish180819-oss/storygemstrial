@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StoryGems</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: #fff5f0;
+      color: #1a1a1a;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: #0b1a40;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      font-weight: 500;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff6b2c;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      text-align: left;
+      color: #fff;
+      padding: 80px 50px;
+      background: url('storygems-theme.png') no-repeat center center/cover;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .hero-buttons a {
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .shop-now {
+      background-color: #ff6b2c;
+      color: #fff;
+    }
+
+    .shop-now:hover {
+      background-color: #e85a1f;
+    }
+
+    .view-plans {
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    .view-plans:hover {
+      background-color: #fff;
+      color: #0b1a40;
+    }
+
+    /* Plans Section */
+    .plans {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .plans h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .plan-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .plan-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      width: 220px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .plan-card h3 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .plan-card p {
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .plan-card span {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .plan-card button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      background-color: #ff6b2c;
+      color: #fff;
+      transition: background 0.3s;
+    }
+
+    .plan-card button:hover {
+      background-color: #e85a1f;
+    }
+
+    .plan-1 { background-color: #ff6b2c; color: #fff; }
+    .plan-2 { background-color: #1a3f70; color: #fff; }
+    .plan-3 { background-color: #4a7a3f; color: #fff; }
+
+    /* Categories */
+    .categories {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .categories h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .category-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .category-card {
+      width: 250px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .category-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .category-card h3 {
+      padding: 15px;
+      background: #fff;
+      font-size: 20px;
+    }
+
+    .shop-all {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 12px 28px;
+      border: 2px solid #1a1a1a;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .shop-all:hover {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    /* Bestsellers */
+    .bestsellers {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .bestsellers h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .bestseller-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .bestseller-card {
+      width: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .bestseller-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .bestseller-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .bestseller-card button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #ff6b2c;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .bestseller-card button:hover {
+      background-color: #e85a1f;
+    }
+
+    /* Responsive */
+    @media(max-width: 900px){
+      .plan-cards, .category-cards, .bestseller-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="logo.png" alt="Logo">StoryGems</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Kids</a></li>
+        <li><a href="#">Teens</a></li>
+        <li><a href="#">Adults</a></li>
+        <li><a href="#">Best Sellers</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <section class="hero">
+    <h1>Discover Your Next Great Read!</h1>
+    <p>Explore a world of stories for all ages.</p>
+    <div class="hero-buttons">
+      <a href="#" class="shop-now">Shop Now</a>
+      <a href="#" class="view-plans">View Plans</a>
+    </div>
+  </section>
+
+
+  <section class="plans">
+    <h2>Choose Your Plan</h2>
+    <div class="plan-cards">
+      <div class="plan-card plan-1">
+        <h3>1 Month</h3>
+        <p>₹830</p>
+        <span>Access to any 2 books</span>
+        <button>Select Plan</button>
+      </div>
+      <div class="plan-card plan-2">
+        <h3>3 Months</h3>
+        <p>₹2,070</p>
+        <span>Access to any 6 books</span>
+        <button>Select Plan</button>
+      </div>
+      <div class="plan-card plan-3">
+        <h3>6 Months</h3>
+        <p>₹3,735</p>
+        <span>Access to any 15 books</span>
+        <button>Select Plan</button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="categories">
+    <h2>Browse by Category</h2>
+    <div class="category-cards">
+      <div class="category-card">
+        <img src="for-kids.png" alt="For Kids">
+        <h3>For Kids</h3>
+      </div>
+      <div class="category-card">
+        <img src="for-teens.png" alt="For Teens">
+        <h3>For Teens</h3>
+      </div>
+      <div class="category-card">
+        <img src="for-adults.png" alt="For Adults">
+        <h3>For Adults</h3>
+      </div>
+    </div>
+    <a href="#" class="shop-all">Shop All Books</a>
+  </section>
+
+  <section class="bestsellers">
+    <h2>Bestsellers</h2>
+    <div class="bestseller-cards">
+      <div class="bestseller-card">
+        <img src="mystery-manor.png" alt="Mystery Manor">
+        <button>Shop Now</button>
+      </div>
+      <div class="bestseller-card">
+        <img src="galactic-quest.png" alt="Galactic Quest">
+        <button>Shop Now</button>
+      </div>
+      <div class="bestseller-card">
+        <img src="fantasy-realms.png" alt="Fantasy Realms">
+        <button>Shop Now</button>
+      </div>
+      <div class="bestseller-card">
+        <img src="cooking-delights.png" alt="Cooking Delights">
+        <button>Shop Now</button>
+      </div>
+      <div class="bestseller-card">
+        <img src="bestseller5.png" alt="Bestseller 5">
+        <button>Shop Now</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
